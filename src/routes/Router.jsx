@@ -17,7 +17,7 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: 'food',
+                path: 'foodError',
                 element:<Food></Food>
             },
             {
