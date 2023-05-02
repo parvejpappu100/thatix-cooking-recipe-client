@@ -53,8 +53,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn btn-warning">Login</a>
+        <div className="navbar-end ">
+          <Link to="/login" className="btn btn-warning">Login</Link>
         </div>
       </div>
     </div>
