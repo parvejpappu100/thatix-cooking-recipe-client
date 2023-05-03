@@ -10,7 +10,7 @@ const ChefDetails = ({ chef }) => {
         <figure>
           <img className="h-80 rounded-md pt-2"
             src={image}
-            alt="Shoes"
+            alt="Chef"
           />
         </figure>
         <div className="card-body">

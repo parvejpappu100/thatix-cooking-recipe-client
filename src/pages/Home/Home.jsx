@@ -15,7 +15,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <div className="lg:container mx-auto">
-        <h3 className="text-center text-5xl mt-20 font-semibold text-yellow-400">
+        <h3 className="text-center text-3xl md:text-5xl mt-20 font-semibold text-yellow-400">
           Our Chefs
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20">

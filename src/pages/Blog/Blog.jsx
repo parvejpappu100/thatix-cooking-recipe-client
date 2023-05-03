@@ -4,9 +4,9 @@ const Blog = () => {
   return (
     <div className="lg:container mx-auto my-10 p-2">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow-xl">
+        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img src="https://i.ibb.co/CtD1Nb1/Blog1.png" alt="Album" />
+            <img className="h-96" src="https://i.ibb.co/CtD1Nb1/Blog1.png" alt="Album" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
@@ -28,9 +28,9 @@ const Blog = () => {
             </p>
           </div>
         </div>
-        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow-xl">
+        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img  src="https://i.ibb.co/hmq955h/Blog5.png" alt="Album" />
+            <img className="h-96"  src="https://i.ibb.co/hmq955h/Blog5.png" alt="Album" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
@@ -50,9 +50,9 @@ const Blog = () => {
             </p>
           </div>
         </div>
-        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow-xl">
+        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img src="https://i.ibb.co/P13ggKR/blog3.png" alt="Album" />
+            <img className="h-96" src="https://i.ibb.co/P13ggKR/blog3.png" alt="Album" />
           </figure>
           <div className="card-body">
             <h2 className="card-title my-5">
@@ -71,9 +71,9 @@ const Blog = () => {
             </p>
           </div>
         </div>
-        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow-xl">
+        <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img src="https://i.ibb.co/G3Lp3Y4/Blog4.webp" alt="Album" />
+            <img className="h-96" src="https://i.ibb.co/G3Lp3Y4/Blog4.webp" alt="Album" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
