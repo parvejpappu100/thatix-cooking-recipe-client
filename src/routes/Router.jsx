@@ -7,6 +7,8 @@ import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Recipe from "../components/Recipe/Recipe";
 import Restaurant from "../components/Restaurant/Restaurant";
+import Register from "../components/Register/Register";
+import EmailPassword from "../components/EmailPassword/EmailPassword";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/email-password',
+                element: <EmailPassword></EmailPassword>
             }
         ]
     }
