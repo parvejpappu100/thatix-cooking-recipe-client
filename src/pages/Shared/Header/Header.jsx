@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 
 const Header = () => {
   return (
@@ -28,13 +29,13 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to='/'>Home</Link>
+                <ActiveLink to='/'>Home</ActiveLink>
               </li>
               <li>
-                <Link to="/blog">Blog</Link>
+                <ActiveLink to="/blog">Blog</ActiveLink>
               </li>
               <li>
-                <Link to="/food">Food</Link>
+                <ActiveLink to="/food">Food</ActiveLink>
               </li>
             </ul>
           </div>
@@ -43,13 +44,13 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to='/'>Home</Link>
+              <ActiveLink to='/'>Home</ActiveLink>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <ActiveLink to="/blog">Blog</ActiveLink>
             </li>
             <li>
-              <Link to="/food">Food</Link>
+              <ActiveLink to="/food">Food</ActiveLink>
             </li>
           </ul>
         </div>
