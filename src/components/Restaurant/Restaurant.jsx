@@ -21,7 +21,7 @@ const Restaurant = () => {
         Visit our Restaurant
       </h4>
       <h3 className="text-4xl font-semibold text-center">Our All Restaurant</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-20 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-20 p-2">
         {restaurants.slice(0 , showAll ? 16 : 8).map((restaurant) => (
           <ShowRestaurant
             key={restaurant.id}
