@@ -1,9 +1,14 @@
 import React from "react";
 import { FaHeart, FaRegStar,  FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Rating from "react-rating";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ShowRecipe = ({ recipe }) => {
   const { name, image, ingredients, cookingMethod, rating } = recipe;
+
+  const notify = () => toast.success("Recipe added favourite list");
+
   return (
     <>
       <div className="card bg-base-100 shadow">
@@ -28,7 +33,12 @@ const ShowRecipe = ({ recipe }) => {
                 <span>{rating}</span>
             </div>
             <div>
-                <FaHeart></FaHeart>
+                <button onClick={notify}>
+                    <FaHeart></FaHeart>
+                    <ToastContainer
+                        autoClose={2000}
+                    ></ToastContainer>
+                </button>
             </div>
           </div>
           <p><strong>Ingredients : </strong> {ingredients}</p>
