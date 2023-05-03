@@ -3,6 +3,8 @@ import Banner from "../Shared/Banner/Banner";
 import { useLoaderData } from "react-router-dom";
 import ChefDetails from "../../components/ChefDetails/ChefDetails";
 import Category from "../../components/Category/Category";
+import { data } from "autoprefixer";
+import Restaurant from "../../components/Restaurant/Restaurant";
 
 const Home = () => {
   const chefs = useLoaderData();
@@ -18,6 +20,13 @@ const Home = () => {
     .then(res => res.json())
     .then(data => setCategories(data))
   },[])
+
+  // const [restaurants , setRestaurants] = useState([]);
+  // useEffect(() =>{
+  //   fetch('http://localhost:5000/restaurant')
+  //   .then(res => res.json())
+  //   .then(data = setRestaurants(data))
+  // } ,[])
 
   return (
     <div>
@@ -50,6 +59,9 @@ const Home = () => {
               See More
             </button>
           )}
+        </div>
+        <div>
+            <Restaurant></Restaurant>
         </div>
       </div>
     </div>
