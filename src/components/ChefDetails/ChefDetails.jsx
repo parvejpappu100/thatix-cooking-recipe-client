@@ -1,8 +1,8 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ChefDetails = ({ chef }) => {
-  console.log(chef);
   const { id, name, image, yearsOfExperience, numberOfRecipes, likes } = chef;
 
   return (
@@ -26,7 +26,11 @@ const ChefDetails = ({ chef }) => {
             </div>
           </div>
           <div className="card-actions justify-start">
-            <button className="btn btn-warning normal-case">View Recipe</button>
+          <Link to={`/recipe/${id}`}>
+                <button  className='btn btn-warning p-3 my-5 normal-case text-base rounded font-semibold'>
+                    View Recipe
+                </button>
+            </Link>
           </div>
         </div>
       </div>
