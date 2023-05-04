@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Form } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useRef, useState } from "react";
+import { Form, Link } from "react-router-dom";
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -10,6 +10,7 @@ const EmailPassword = () => {
 
   const [loginError , setLoginError] = useState('');
   const [success , setSuccess] = useState('');
+  const emailRef = useRef();
 
   const handleLogIn = event =>{
     event.preventDefault();
@@ -34,6 +35,18 @@ const EmailPassword = () => {
     console.log()
   }
 
+  const handleRestPassword = event =>{
+    const email = emailRef.current.value;
+      if(! email){
+        alert("Please provide a email address for rest password");
+        return;
+      }
+      sendPasswordResetEmail(auth , email)
+      .then(() =>{
+        alert("Please check your email and reset password")
+      })
+  }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -53,6 +66,7 @@ const EmailPassword = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  ref={emailRef}
                   name="email"
                   type="text"
                   placeholder="email"
@@ -72,7 +86,7 @@ const EmailPassword = () => {
                   required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <a onClick={handleRestPassword} className="label-text-alt link link-hover">
                     Forgot password?
                   </a>
                 </label>
@@ -83,6 +97,7 @@ const EmailPassword = () => {
               <p className="text-green-400">{success}</p>
               <p className="text-red-400">{loginError}</p>
             </div>
+            <p className="text-center mb-5">No account yet ? Please <Link className="underline" to="/register">Sing up</Link></p>
           </Form>
         </div>
       </div>
