@@ -47,10 +47,10 @@ const Login = () => {
                 <span><FaGoogle></FaGoogle></span>
                 <span>Login with Google</span>
               </button>
-              <button className="flex items-center gap-4 border border-black rounded-md font-bold px-10 py-5 text-xl my-5">
+              <Link to='/email-password' className="flex items-center gap-4 border border-black rounded-md font-bold px-10 py-5 text-xl my-5">
                 <span><FaVoicemail></FaVoicemail></span>
                 <span>Login with Email/Password</span>
-              </button>
+              </Link>
               <p className="text-center">No account yet ? Please <Link className="underline" to="/register">Sing up</Link></p>
             </div>
           </div>
