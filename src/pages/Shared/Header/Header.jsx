@@ -76,7 +76,9 @@ const Header = () => {
             {
               user ? 
                 <div className="flex items-center gap-3">
-                  <img className="rounded-full h-12 w-12 " src={user.photoURL}></img>
+                  <div className="tooltip  tooltip-left" data-tip={user.displayName}>
+                    <img className="rounded-full h-12 w-12" src={user.photoURL}></img>
+                  </div>
                   <button onClick={handleSingOut} className="btn btn-warning normal-case text-base">Sing Out</button>
                 </div> : 
                 <div className="flex items-center gap-3">

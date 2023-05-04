@@ -3,7 +3,7 @@ import Pdf from "react-to-pdf";
 
 const Blog = () => {
   const ref = useRef();
-
+  
   return (
     <div className="lg:container mx-auto my-10 p-2">
       <div className="text-center mb-10">
