@@ -20,12 +20,12 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/chef-data")
+                loader: () => fetch("https://thatix-cooking-recipe-server-parvejpappu100.vercel.app/chef-data")
             },
             {
                 path: 'recipe/:id',
                 element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
-                loader: () => fetch("http://localhost:5000/chef-data")
+                loader: () => fetch("https://thatix-cooking-recipe-server-parvejpappu100.vercel.app/chef-data")
             },
             {
                 path: 'foodError',

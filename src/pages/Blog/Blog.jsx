@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
+import Pdf from "react-to-pdf";
 
 const Blog = () => {
+  const ref = useRef();
+
   return (
     <div className="lg:container mx-auto my-10 p-2">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="text-center mb-10">
+        <Pdf targetRef={ref} filename="document.pdf">
+          {({ toPdf }) => (
+            <button  onClick={toPdf} className="btn btn-ghost normal-case">
+              Download PDF
+            </button>
+          )}
+        </Pdf>
+      </div>
+      <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img className="h-96" src="https://i.ibb.co/CtD1Nb1/Blog1.png" alt="Album" />
+            <img
+              className="h-96 w-full"
+              src="https://i.ibb.co/CtD1Nb1/Blog1.png"
+              alt="Album"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
@@ -30,7 +46,11 @@ const Blog = () => {
         </div>
         <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img className="h-96"  src="https://i.ibb.co/hmq955h/Blog5.png" alt="Album" />
+            <img
+              className="h-96 w-full"
+              src="https://i.ibb.co/hmq955h/Blog5.png"
+              alt="Album"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
@@ -52,7 +72,11 @@ const Blog = () => {
         </div>
         <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img className="h-96" src="https://i.ibb.co/P13ggKR/blog3.png" alt="Album" />
+            <img
+              className="h-96 w-full"
+              src="https://i.ibb.co/P13ggKR/blog3.png"
+              alt="Album"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title my-5">
@@ -73,14 +97,26 @@ const Blog = () => {
         </div>
         <div className="card max-w-3xl mx-auto my-4 bg-base-100 shadow">
           <figure>
-            <img className="h-96" src="https://i.ibb.co/G3Lp3Y4/Blog4.webp" alt="Album" />
+            <img
+              className="h-96 w-full"
+              src="https://i.ibb.co/G3Lp3Y4/Blog4.webp"
+              alt="Album"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
-            What is a custom hook, and why will you create a custom hook?
+              What is a custom hook, and why will you create a custom hook?
             </h2>
             <p>
-            A custom hook is a reusable function in React that encapsulates complex logic and state management into a single, reusable hook. Custom hooks are a way to share logic between components without duplicating code or relying on higher-order components or render props.Creating a custom hook can help make code more modular, easier to read, and simpler to maintain. By abstracting away complex functionality into a single, reusable hook, developers can more easily manage the complexity of their code and reduce the amount of boilerplate code needed in their components.
+              A custom hook is a reusable function in React that encapsulates
+              complex logic and state management into a single, reusable hook.
+              Custom hooks are a way to share logic between components without
+              duplicating code or relying on higher-order components or render
+              props.Creating a custom hook can help make code more modular,
+              easier to read, and simpler to maintain. By abstracting away
+              complex functionality into a single, reusable hook, developers can
+              more easily manage the complexity of their code and reduce the
+              amount of boilerplate code needed in their components.
             </p>
           </div>
         </div>

@@ -5,7 +5,7 @@ import ShowRestaurant from "../ShowRestaurant/ShowRestaurant";
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/restaurant")
+    fetch("https://thatix-cooking-recipe-server-parvejpappu100.vercel.app/restaurant")
       .then((res) => res.json())
       .then((data) => setRestaurants(data));
   }, []);
