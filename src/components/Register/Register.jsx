@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProviders";
 
@@ -8,7 +8,7 @@ const auth = getAuth(app);
 
 const Register = () => {
 
-  const {user , createUser} = useContext(AuthContext)
+  const { createUser} = useContext(AuthContext)
 
   const [registerError , setRegisterError] = useState('');
   const [success , setSuccess] = useState('');
@@ -17,6 +17,7 @@ const Register = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const name = event.target.name.value;
     // * validate:
     if(!/(?=.*[A-Z].*[A-Z])/.test(password) ){
       setRegisterError("Please add at least two upper case letter.")
@@ -30,20 +31,33 @@ const Register = () => {
       setRegisterError('Please add at least 6 character in you password')
       return;
     }
-    console.log(email , password)
+    
 
     createUser(email , password)
     .then(result =>{
       const user = result.user;
       setSuccess("User has create successfully")
-      console.log(user)
       setRegisterError('');
       event.target.reset();
+      updateUserData(user , name , user.photoURL)
     })
     .catch(error => {
       console.log(error.message)
       setRegisterError(error.message)
       setSuccess('');
+    })
+  }
+
+  const updateUserData = (user , name , photoUrl) =>{
+    updateProfile(user , {
+      displayName: name,
+      photoURL: photoUrl
+    })
+    .then(() => {
+
+    })
+    .catch(error => {
+
     })
   }
 

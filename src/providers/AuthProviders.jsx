@@ -30,6 +30,7 @@ const AuthProviders = ({children}) => {
     const gitHubSingIn = () =>{
         return signInWithPopup(auth , githubProvider)
     }
+    
 
     const userSingOut = () =>{
          return signOut(auth)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart, FaRegStar,  FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Rating from "react-rating";
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,8 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ShowRecipe = ({ recipe }) => {
   const { name, image, ingredients, cookingMethod, rating } = recipe;
+  const [disable, setDisable] = useState(false);
 
-  const notify = () => toast.success("Recipe added favourite list");
+  const notify = () => {
+    toast.success("Recipe added favourite list")
+    setDisable(true)
+  };
 
   return (
     <>
@@ -33,7 +37,7 @@ const ShowRecipe = ({ recipe }) => {
                 <span>{rating}</span>
             </div>
             <div>
-                <button onClick={notify}>
+                <button  disabled={disable} onClick={notify}>
                     <FaHeart></FaHeart>
                     <ToastContainer
                         autoClose={2000}
