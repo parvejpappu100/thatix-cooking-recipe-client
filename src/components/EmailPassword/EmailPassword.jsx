@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-import app from "../../firebase/firebase.config";
+import { AuthContext } from "../../providers/AuthProviders";
 
-const auth = getAuth(app);
 
 
 const EmailPassword = () => {
+
+  const {singIn , restPassword , setUser} = useContext(AuthContext);
 
   const [loginError , setLoginError] = useState('');
   const [success , setSuccess] = useState('');
@@ -18,13 +18,13 @@ const EmailPassword = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    signInWithEmailAndPassword(auth , email , password)
+    singIn(email , password)
     .then(result => {
       const user = result.user;
       setSuccess("Login successfully")
       setLoginError('');
       event.target.reset();
-      console.log(user)
+      setUser(user)
     })
     .catch(error => {
       console.log(error.message)
@@ -41,7 +41,7 @@ const EmailPassword = () => {
         alert("Please provide a email address for rest password");
         return;
       }
-      sendPasswordResetEmail(auth , email)
+      restPassword(email)
       .then(() =>{
         alert("Please check your email and reset password")
       })

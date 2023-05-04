@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGithub , FaGoogle , FaVoicemail} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
-import app from "../../firebase/firebase.config";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
 
-  const auth = getAuth(app);
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
+  const {googleSingIn , gitHubSingIn , setUser} = useContext(AuthContext);
 
   const handleGoogleSingIn = () =>{
-    signInWithPopup(auth , googleProvider)
+    googleSingIn()
     .then(result => {
       const user = result.user;
-      console.log(user)
+      setUser(user)
     })
     .catch(error => {
       console.log(error.message)
@@ -22,10 +19,10 @@ const Login = () => {
   }
 
   const handleGithubSingIn = () =>{
-    signInWithPopup(auth , githubProvider)
+    gitHubSingIn()
     .then(result => {
       const user = result.user;
-      console.log(user)
+      setUser(user)
     })
     .catch(error => {
       console.log(error.message)
