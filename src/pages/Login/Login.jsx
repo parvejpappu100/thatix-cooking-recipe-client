@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { FaGithub , FaGoogle , FaVoicemail} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {googleSingIn , gitHubSingIn , setUser} = useContext(AuthContext);
 
@@ -12,6 +16,7 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       setUser(user)
+      navigate(from)
     })
     .catch(error => {
       
@@ -23,6 +28,7 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       setUser(user)
+      navigate(from)
     })
     .catch(error => {
       

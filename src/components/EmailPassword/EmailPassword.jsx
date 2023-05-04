@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 
@@ -7,6 +7,8 @@ import { AuthContext } from "../../providers/AuthProviders";
 const EmailPassword = () => {
 
   const {singIn , restPassword , setUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [loginError , setLoginError] = useState('');
   const [success , setSuccess] = useState('');
@@ -25,6 +27,7 @@ const EmailPassword = () => {
       setLoginError('');
       event.target.reset();
       setUser(user)
+      navigate('/')
     })
     .catch(error => {
       console.log(error.message)

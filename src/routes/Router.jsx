@@ -9,6 +9,7 @@ import Recipe from "../components/Recipe/Recipe";
 import Restaurant from "../components/Restaurant/Restaurant";
 import Register from "../components/Register/Register";
 import EmailPassword from "../components/EmailPassword/EmailPassword";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'recipe/:id',
-                element: <Recipe></Recipe>,
+                element: <PrivateRoute><Recipe></Recipe></PrivateRoute>,
                 loader: () => fetch("http://localhost:5000/chef-data")
             },
             {

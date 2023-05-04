@@ -18,6 +18,7 @@ const Register = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const name = event.target.name.value;
+    const photo = event.target.photo.value;
     // * validate:
     if(!/(?=.*[A-Z].*[A-Z])/.test(password) ){
       setRegisterError("Please add at least two upper case letter.")
@@ -39,7 +40,7 @@ const Register = () => {
       setSuccess("User has create successfully")
       setRegisterError('');
       event.target.reset();
-      updateUserData(user , name , user.photoURL)
+      updateUserData(user , name , photo)
     })
     .catch(error => {
       console.log(error.message)
@@ -84,6 +85,18 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Phot URL</span>
+                </label>
+                <input
+                  name="photo"
+                  type="text"
+                  placeholder="Your photo url"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
@@ -105,11 +118,6 @@ const Register = () => {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <p className="text-green-400 mb-3">{success}</p>
               <p className="text-red-500 mb-3 font-semibold">{registerError}</p>
