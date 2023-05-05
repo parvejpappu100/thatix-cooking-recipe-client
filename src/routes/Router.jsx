@@ -28,7 +28,7 @@ const router = createBrowserRouter([
                 loader: () => fetch("https://thatix-cooking-recipe-server-parvejpappu100.vercel.app/chef-data")
             },
             {
-                path: 'Error',
+                path: 'ErrorPage',
                 element:<Error></Error>
             },
             {
