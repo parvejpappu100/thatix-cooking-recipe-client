@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart , FaRegHeart } from "react-icons/fa";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,7 +10,7 @@ const ShowRecipe = ({ recipe }) => {
   const [disable, setDisable] = useState(false);
 
   const notify = () => {
-    toast.success("Recipe added favourite list")
+    toast.success("Recipe added favorite list")
     setDisable(true)
   };
 
@@ -32,10 +32,12 @@ const ShowRecipe = ({ recipe }) => {
                 <span>{rating}</span>
             </div>
             <div>
-                <button  disabled={disable} onClick={notify}>
-                    <FaHeart></FaHeart>
-                    <ToastContainer></ToastContainer>
+                {
+                  disable ? <FaHeart className="text-red-400"></FaHeart> : <button  disabled={disable} onClick={notify}>
+                  <FaRegHeart></FaRegHeart>
+                  <ToastContainer></ToastContainer>
                 </button>
+                }
             </div>
           </div>
           <p><strong>Ingredients : </strong> {ingredients}</p>
