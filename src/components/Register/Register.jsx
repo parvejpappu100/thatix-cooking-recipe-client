@@ -92,7 +92,6 @@ const Register = () => {
                   type="text"
                   placeholder="Your photo url"
                   className="input input-bordered"
-                  required
                 />
               </div>
               <div className="form-control">

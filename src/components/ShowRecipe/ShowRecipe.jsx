@@ -34,9 +34,7 @@ const ShowRecipe = ({ recipe }) => {
             <div>
                 <button  disabled={disable} onClick={notify}>
                     <FaHeart></FaHeart>
-                    <ToastContainer
-                        autoClose={2000}
-                    ></ToastContainer>
+                    <ToastContainer></ToastContainer>
                 </button>
             </div>
           </div>

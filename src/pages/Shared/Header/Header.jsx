@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { FaUserCircle } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   let { user, userSingOut , setUser } = useContext(AuthContext);
@@ -12,6 +14,7 @@ const Header = () => {
       userSingOut()
       .then((result) => {
         setUser(null)
+        toast.success("Log out successfully")
       })
       .catch((error) => {
         
@@ -50,7 +53,7 @@ const Header = () => {
                 <ActiveLink to="/blog">Blog</ActiveLink>
               </li>
               <li>
-                <ActiveLink to="/food">Food</ActiveLink>
+                <ActiveLink to="/food">ErrorPage</ActiveLink>
               </li>
             </ul>
           </div>
@@ -67,7 +70,7 @@ const Header = () => {
               <ActiveLink to="/blog">Blog</ActiveLink>
             </li>
             <li>
-              <ActiveLink to="/food">Food</ActiveLink>
+              <ActiveLink to="/food">ErrorPage</ActiveLink>
             </li>
           </ul>
         </div>
@@ -77,12 +80,15 @@ const Header = () => {
               user ? 
                 <div className="flex items-center gap-3">
                   <div className="tooltip  tooltip-left" data-tip={user.displayName}>
-                    <img className="rounded-full h-12 w-12" src={user.photoURL}></img>
+                    {
+                      user.photoURL ? <img className="rounded-full h-12 w-12" src={user.photoURL}></img> : <FaUserCircle className="h-12 w-12"></FaUserCircle> 
+                    } 
                   </div>
-                  <button onClick={handleSingOut} className="btn btn-warning normal-case text-base">Sing Out</button>
+                  <button onClick={handleSingOut} className="btn btn-warning normal-case text-base">
+                    Log Out <ToastContainer></ToastContainer>
+                  </button>
                 </div> : 
                 <div className="flex items-center gap-3">
-                  <FaUserCircle className="h-12 w-12"></FaUserCircle>
                   <Link to="/login" className="btn btn-warning normal-case text-base">Login</Link>
                 </div>
              
