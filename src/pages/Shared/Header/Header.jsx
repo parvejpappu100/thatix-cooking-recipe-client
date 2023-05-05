@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import ActiveLink from "../../../components/ActiveLink/ActiveLink";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { FaUserCircle } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   let { user, userSingOut , setUser } = useContext(AuthContext);
@@ -14,7 +12,7 @@ const Header = () => {
       userSingOut()
       .then((result) => {
         setUser(null)
-        toast.success("Log out successfully")
+        
       })
       .catch((error) => {
         
@@ -53,7 +51,7 @@ const Header = () => {
                 <ActiveLink to="/blog">Blog</ActiveLink>
               </li>
               <li>
-                <ActiveLink to="/food">ErrorPage</ActiveLink>
+                <ActiveLink to="/error">ErrorPage</ActiveLink>
               </li>
             </ul>
           </div>
@@ -70,7 +68,7 @@ const Header = () => {
               <ActiveLink to="/blog">Blog</ActiveLink>
             </li>
             <li>
-              <ActiveLink to="/food">ErrorPage</ActiveLink>
+              <ActiveLink to="/error">ErrorPage</ActiveLink>
             </li>
           </ul>
         </div>
@@ -85,7 +83,7 @@ const Header = () => {
                     } 
                   </div>
                   <button onClick={handleSingOut} className="btn btn-warning normal-case text-base">
-                    Log Out <ToastContainer></ToastContainer>
+                    Log Out 
                   </button>
                 </div> : 
                 <div className="flex items-center gap-3">

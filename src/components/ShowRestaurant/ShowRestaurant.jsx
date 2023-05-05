@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ShowRestaurant = ({ restaurant }) => {
-  const { image, name, location } = restaurant;
+  const { image, name, location , link } = restaurant;
   return (
-    <Link>
+    <a target="_blank" href={link}>
       <div className="card card-compact  bg-base-100 shadow hover:scale-75 duration-1000 ">
         <figure>
           <img
@@ -18,7 +18,7 @@ const ShowRestaurant = ({ restaurant }) => {
         </div>
        
       </div>
-    </Link>
+    </a>
   );
 };
 
