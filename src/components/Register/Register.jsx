@@ -3,63 +3,67 @@ import { Form, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProviders";
+import useTitle from "../../hooks/useTitle";
 
 const auth = getAuth(app);
 
+
 const Register = () => {
 
-  const { createUser} = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext)
 
-  const [registerError , setRegisterError] = useState('');
-  const [success , setSuccess] = useState('');
+  const [registerError, setRegisterError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleRegister = event =>{
+  useTitle("Register")
+
+  const handleRegister = event => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     const name = event.target.name.value;
     const photo = event.target.photo.value;
     // * validate:
-    if(!/(?=.*[A-Z].*[A-Z])/.test(password) ){
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
       setRegisterError("Please add at least two upper case letter.")
       return;
     }
-    else if(!/(?=.*[@$!%*?&])/.test(password)){
+    else if (!/(?=.*[@$!%*?&])/.test(password)) {
       setRegisterError('Password should be at least one special character')
       return;
     }
-    else if (password.length < 6){
+    else if (password.length < 6) {
       setRegisterError('Please add at least 6 character in you password')
       return;
     }
-    
 
-    createUser(email , password)
-    .then(result =>{
-      const user = result.user;
-      setSuccess("User has create successfully")
-      setRegisterError('');
-      event.target.reset();
-      updateUserData(user , name , photo)
-    })
-    .catch(error => {
-      console.log(error.message)
-      setRegisterError(error.message)
-      setSuccess('');
-    })
+
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        setSuccess("User has create successfully")
+        setRegisterError('');
+        event.target.reset();
+        updateUserData(user, name, photo)
+      })
+      .catch(error => {
+        console.log(error.message)
+        setRegisterError(error.message)
+        setSuccess('');
+      })
   }
 
-  const updateUserData = (user , name , photoUrl) =>{
-    updateProfile(user , {
+  const updateUserData = (user, name, photoUrl) => {
+    updateProfile(user, {
       displayName: name,
       photoURL: photoUrl
     })
-    .then(() => {
+      .then(() => {
 
-    })
-    .catch(error => {
+      })
+      .catch(error => {
 
-    })
+      })
   }
 
   return (
@@ -70,7 +74,7 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Register Now!</h1>
           </div>
           <Form onSubmit={handleRegister} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div  className="card-body">
+            <div className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Name</span>

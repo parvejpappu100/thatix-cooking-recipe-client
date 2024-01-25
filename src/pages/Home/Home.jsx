@@ -5,9 +5,12 @@ import ChefDetails from "../../components/ChefDetails/ChefDetails";
 import Category from "../../components/Category/Category";
 import { data } from "autoprefixer";
 import Restaurant from "../../components/Restaurant/Restaurant";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
   const chefs = useLoaderData();
+
+  useTitle("Home")
 
   const [showAll, setShowAll] = useState(false);
   const handleShowAll = () => {

@@ -1,7 +1,10 @@
 import React from 'react';
 import { useNavigate, useRouteError } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const ErrorPage = () => {
+
+    useTitle("Error")
 
     const navigate = useNavigate();
     const handleGoBack = () =>{

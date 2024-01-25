@@ -7,42 +7,51 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
 
-    const [user , setUser] = useState(null);
-    const createUser = (email , password) =>{
-        return createUserWithEmailAndPassword(auth , email , password);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const singIn = (email, password) =>{
-        return signInWithEmailAndPassword(auth, email , password)
+    const singIn = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const restPassword = email =>{
-        return sendPasswordResetEmail(auth , email);
+    const restPassword = email => {
+        setLoading(true)
+        return sendPasswordResetEmail(auth, email);
     }
 
-    const googleSingIn = () =>{
-        return signInWithPopup(auth , googleProvider)
+    const googleSingIn = () => {
+        setLoading(true)
+        return signInWithPopup(auth, googleProvider)
     }
 
-    const gitHubSingIn = () =>{
-        return signInWithPopup(auth , githubProvider)
+    const gitHubSingIn = () => {
+        setLoading(true)
+        return signInWithPopup(auth, githubProvider)
     }
-    
 
-    const userSingOut = () =>{
-         return signOut(auth)
+
+    const userSingOut = () => {
+        setLoading(true)
+        return signOut(auth)
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth , loggedUser =>{
+        const unsubscribe = onAuthStateChanged(auth, loggedUser => {
             setUser(loggedUser)
+            setLoading(false);
         })
-        return () =>{
+        return () => {
             unsubscribe();
         }
-    } , [])
+    }, [])
 
     const authInfo = {
         user,
@@ -52,7 +61,8 @@ const AuthProviders = ({children}) => {
         googleSingIn,
         gitHubSingIn,
         setUser,
-        userSingOut
+        userSingOut,
+        loading
     }
 
     return (

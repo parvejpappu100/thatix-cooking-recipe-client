@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import Pdf from "react-to-pdf";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = () => {
   const ref = useRef();
+  useTitle("Blog")
   
   return (
     <div className="lg:container mx-auto my-10 p-2">

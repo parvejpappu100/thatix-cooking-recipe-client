@@ -1,10 +1,12 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import ShowRecipe from "../ShowRecipe/ShowRecipe";
+import useTitle from "../../hooks/useTitle";
 
 const Recipe = () => {
   const { id } = useParams();
   const loadRecipes = useLoaderData();
+  useTitle("Recipe")
 
   const recipe = loadRecipes.find((recipe) => recipe.id == id);
   const { name, image, yearsOfExperience, numberOfRecipes, bio, recipes } =

@@ -1,38 +1,41 @@
 import React, { useContext } from "react";
-import { FaGithub , FaGoogle , FaVoicemail} from "react-icons/fa";
+import { FaGithub, FaGoogle, FaVoicemail } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  useTitle("Login")
+
   const from = location.state?.from?.pathname || "/";
 
-  const {googleSingIn , gitHubSingIn , setUser} = useContext(AuthContext);
+  const { googleSingIn, gitHubSingIn, setUser } = useContext(AuthContext);
 
-  const handleGoogleSingIn = () =>{
+  const handleGoogleSingIn = () => {
     googleSingIn()
-    .then(result => {
-      const user = result.user;
-      setUser(user)
-      navigate(from)
-    })
-    .catch(error => {
-      
-    })
+      .then(result => {
+        const user = result.user;
+        setUser(user)
+        navigate(from)
+      })
+      .catch(error => {
+
+      })
   }
 
-  const handleGithubSingIn = () =>{
+  const handleGithubSingIn = () => {
     gitHubSingIn()
-    .then(result => {
-      const user = result.user;
-      setUser(user)
-      navigate(from)
-    })
-    .catch(error => {
-      
-    })
+      .then(result => {
+        const user = result.user;
+        setUser(user)
+        navigate(from)
+      })
+      .catch(error => {
+
+      })
   }
 
   return (

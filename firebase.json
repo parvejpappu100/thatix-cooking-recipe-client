@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "projectId": "thatix-cooking-recipe",
     "ignore": [
       "firebase.json",
       "**/.*",
