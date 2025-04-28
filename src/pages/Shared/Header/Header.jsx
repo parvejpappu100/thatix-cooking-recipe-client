@@ -55,7 +55,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost italic hover:not-italic normal-case text-xl">
+          <a href="/" className=" italic font-semibold normal-case text-xl">
             ThatixCooking
           </a>
         </div>
